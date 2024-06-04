@@ -4,10 +4,33 @@ import 'package:expense_tracker/widgets/expenses.dart';
 // initializing a variable with a k "makes it" global
 // this is a color scheme that will be used throughout the app with the color passed on the seedColor parameter
 var kColorScheme = ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 114, 21, 8));
+var kDarkColorScheme = ColorScheme.fromSeed(
+  brightness: Brightness.dark,
+  seedColor: const Color.fromARGB(255, 224, 80, 80)
+);
 
 void main() {
   runApp (
     MaterialApp(
+      darkTheme: ThemeData.dark().copyWith(
+        colorScheme: kDarkColorScheme,
+        cardTheme: const CardTheme().copyWith(
+          color: kDarkColorScheme.secondaryContainer,
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8)
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: kDarkColorScheme.primaryContainer,
+          )
+        ),
+        textTheme: ThemeData().textTheme.copyWith(
+          titleLarge: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: kDarkColorScheme.onSecondaryContainer
+          ),
+        )
+      ),
       theme: ThemeData().copyWith(
         colorScheme: kColorScheme,
         appBarTheme: const AppBarTheme().copyWith(
@@ -25,12 +48,13 @@ void main() {
         ),
         textTheme: ThemeData().textTheme.copyWith(
           titleLarge: TextStyle(
-            fontSize: 22,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
-            color: kColorScheme.secondaryContainer
+            color: kColorScheme.onSecondaryContainer
           ),
         )
       ),
+      themeMode: ThemeMode.system,
       home: const Expenses(),
     )
   );

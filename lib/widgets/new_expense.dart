@@ -92,6 +92,9 @@ class _NewExpenseState extends State<NewExpense> {
               decoration: const InputDecoration(
                 label: Text('Title'),
               ),
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onPrimaryContainer
+              )
             ),
             Row(
               children: [
@@ -103,6 +106,9 @@ class _NewExpenseState extends State<NewExpense> {
                       prefixText: '\$ ',
                       label: Text('Amount'),
                     ),
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onPrimaryContainer
+                    )
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -112,7 +118,12 @@ class _NewExpenseState extends State<NewExpense> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       // the ! forces the value to be non-nullable
-                      Text(_selectedDate == null ? 'No date selected' : formatter.format(_selectedDate!)), 
+                      Text(
+                        _selectedDate == null ? 'No date selected' : formatter.format(_selectedDate!),
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.onPrimaryContainer
+                        )   
+                      ), 
                       IconButton(
                         onPressed: _openDatePicker,
                         icon: const Icon(Icons.calendar_month),
@@ -126,6 +137,9 @@ class _NewExpenseState extends State<NewExpense> {
             Row(children: [
               DropdownButton(
                 value: _selectedCategory,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onPrimaryContainer
+                ),
                 items: Category.values.map(
                   (category) => DropdownMenuItem(value: category, child: Text(category.name.toUpperCase()))
                 ).toList(),
