@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/widgets/expenses.dart';
+//import 'package:flutter/services.dart';
 
 // initializing a variable with a k "makes it" global
 // this is a color scheme that will be used throughout the app with the color passed on the seedColor parameter
 var kColorScheme = ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 114, 21, 8));
+
 var kDarkColorScheme = ColorScheme.fromSeed(
   brightness: Brightness.dark,
   seedColor: const Color.fromARGB(255, 224, 80, 80)
 );
 
 void main() {
-  runApp (
-    MaterialApp(
+  // locks the device orientation to portrait
+  //WidgetsFlutterBinding.ensureInitialized();
+  //SystemChrome.setPreferredOrientations([
+  //  DeviceOrientation.portraitUp
+  //]).then((fn) {
+  runApp(
+    MaterialApp(   
       darkTheme: ThemeData.dark().copyWith(
         colorScheme: kDarkColorScheme,
         cardTheme: const CardTheme().copyWith(
@@ -58,4 +65,5 @@ void main() {
       home: const Expenses(),
     )
   );
+  //});
 }
